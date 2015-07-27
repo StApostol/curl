@@ -162,7 +162,7 @@ class Curl
 
         $options = $this->getOptions();
         $options[CURLOPT_POST] = true;
-        $options[CURLOPT_POSTFIELDS] = $data;
+        $options[CURLOPT_POSTFIELDS] = is_array($data) ? http_build_query($data) : $data;
 
         return $this->exec($url, $options, $debug);
     }
